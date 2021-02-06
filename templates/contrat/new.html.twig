@@ -1,0 +1,11 @@
+{% extends 'agent.html.twig' %}
+
+{% block title %}Contrat{% endblock %}
+
+{% block main %}
+    <h1>Ajouter Contrat</h1>
+
+    {{ include('contrat/_form.html.twig') }}
+
+    <a href="{{ path('contrat_index') }}">retour vers liste</a>
+{% endblock %}

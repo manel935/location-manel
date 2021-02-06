@@ -1,0 +1,41 @@
+{% extends 'agent.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block main %}
+    <h1>Clients</h1>
+
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Numero de Permis</th>
+                <th>Telephone</th>
+                <th>Ville</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.numPermis }}</td>
+                <td>{{ client.tel }}</td>
+                <td>{{ client.ville }}</td>
+                <td>
+                    <a href="{{ path('client_show', {'id': client.id}) }}">afficher</a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">rien à afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('client_new') }}">Ajouter</a>
+{% endblock %}

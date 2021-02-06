@@ -1,0 +1,57 @@
+{% extends isAdmin ? 'admin.html.twig' : 'agent.html.twig' %}
+
+{% block title %}Voitures{% endblock %}
+
+{% block main %}
+    <h1>Voitures</h1>
+
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Marque</th>
+                <th>Couleur</th>
+                <th>Carburant</th>
+                <th>Nombre de Places</th>
+                <th>Description</th>
+                <th>Disponibilite</th>
+                <th>Date Mise En Circulation</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.matricule }}</td>
+                <td>{{ voiture.marque }}</td>
+                <td>{{ voiture.couleur }}</td>
+                <td>{{ voiture.carburant }}</td>
+                <td>{{ voiture.nbrPlace }}</td>
+                <td>{{ voiture.description }}</td>
+                <td>{{ voiture.disponibilite ? 'Oui' : 'Non' }}</td>
+                <td>{{ voiture.dateMiseEnCirculation ? voiture.dateMiseEnCirculation|date('Y-m-d') : '' }}</td>
+                <td>
+                    {% if isAdmin %}
+                        <a href="{{ path('voiture_show', {'id': voiture.id}) }}">afficher</a>
+                        <a href="{{ path('voiture_edit', {'id': voiture.id}) }}">modifier</a>
+                    {% else %}
+                        {% if voiture.disponibilite %}
+                            <a href="{{ path('voiture_rent', {'id': voiture.id}) }}">louer</a>
+                        {% else %}
+                            <a href="{{ path('voiture_return', {'id': voiture.id}) }}">rendre</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">rien à afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('voiture_new') }}">Ajouter</a>
+{% endblock %}

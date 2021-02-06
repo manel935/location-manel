@@ -1,0 +1,24 @@
+{% extends 'agent.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block main %}
+    <h1>Dashboard</h1>
+
+    <table class="table table-bordered table-light">
+        <tbody>
+            <tr>
+                <td>Voitures disponibles</td>
+                <td>{{ voituresDisp }}</td>
+            </tr>
+            <tr>
+                <td>Voitures non rendues</td>
+                <td>{{ voituresNonRendues }}</td>
+            </tr>
+            <tr>
+                <td>Factures impayees</td>
+                <td>{{ facturesImp }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

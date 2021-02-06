@@ -1,0 +1,41 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Agences{% endblock %}
+
+{% block main %}
+    <h1>Agences</h1>
+
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Tel agence</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agence in agences %}
+            <tr>
+                <td>{{ agence.id }}</td>
+                <td>{{ agence.nom }}</td>
+                <td>{{ agence.telAgence }}</td>
+                <td>{{ agence.adresse }}</td>
+                <td>{{ agence.ville }}</td>
+                <td>
+                    <a href="{{ path('agence_show', {'id': agence.id}) }}">afficher</a>
+                    <a href="{{ path('agence_edit', {'id': agence.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">rien à afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('agence_new') }}">Ajouter</a>
+{% endblock %}

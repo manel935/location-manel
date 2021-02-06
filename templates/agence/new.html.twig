@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Agence{% endblock %}
+
+{% block main %}
+    <h1>Ajouter Agence</h1>
+
+    {{ include('agence/_form.html.twig') }}
+
+    <a href="{{ path('agence_index') }}">retour vers liste</a>
+{% endblock %}

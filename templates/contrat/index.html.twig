@@ -1,0 +1,43 @@
+{% extends 'agent.html.twig' %}
+
+{% block title %}Contrat{% endblock %}
+
+{% block main %}
+    <h1>Contrats</h1>
+
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Client</th>
+                <th>Voiture</th>
+                <th>Date De Depart</th>
+                <th>Date De Retour</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contrat in contrats %}
+            <tr>
+                <td>{{ contrat.id }}</td>
+                <td>{{ contrat.type }}</td>
+                <td>{{ contrat.getClient().getNom() }}</td>
+                <td>{{ contrat.getVoiture().getMarque() }}-{{ contrat.getVoiture().getMatricule() }}</td>
+                <td>{{ contrat.dateDeDep ? contrat.dateDeDep|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.dateDeRet ? contrat.dateDeRet|date('Y-m-d') : '' }}</td>
+                <td>
+                        <a href="{{ path('contrat_show', {'id': contrat.id}) }}">afficher</a>
+                        <a href="{{ path('contrat_edit', {'id': contrat.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">rien à afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contrat_new') }}">Ajouter</a>
+{% endblock %}

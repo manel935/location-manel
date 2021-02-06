@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Agence{% endblock %}
+
+{% block main %}
+    <h1>Agence</h1>
+
+    <table class="table table-bordered table-light">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agence.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agence.nom }}</td>
+            </tr>
+            <tr>
+                <th>Tel_agence</th>
+                <td>{{ agence.telAgence }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ agence.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ agence.ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('agence_index') }}">retour vers liste</a>
+
+    <a href="{{ path('agence_edit', {'id': agence.id}) }}">modifier</a>
+
+    {{ include('agence/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block main %}
+    <h1>Ajouter Voiture</h1>
+
+    {{ include('voiture/_form.html.twig') }}
+
+    <a href="{{ path('voiture_index') }}">retour vers liste</a>
+{% endblock %}

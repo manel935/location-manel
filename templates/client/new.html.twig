@@ -1,0 +1,11 @@
+{% extends 'agent.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block main %}
+    <h1>Ajouter Client</h1>
+
+    {{ include('client/_form.html.twig') }}
+
+    <a href="{{ path('client_index') }}">retour vers liste</a>
+{% endblock %}
